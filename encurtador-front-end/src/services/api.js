@@ -4,6 +4,26 @@ const api = axios.create({
   baseURL: 'http://localhost:3333/',
 });
 
+export const registerApi = ({ user,password }) => {
+  const response = api.post(
+    'register',
+    {
+      user,
+      password,
+    },
+    {
+      'Content-Type': 'application/json',
+    },
+  )
+  .then((res) => {
+    return res;
+  }).catch((error) => {
+    console.log(error);
+    return 'User already used';
+  })
+  return response;
+}
+
 export const loginApi = ({ user,password }) => {
   const response = api.post(
     'login',

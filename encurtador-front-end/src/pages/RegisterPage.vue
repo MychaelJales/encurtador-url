@@ -1,12 +1,12 @@
 <template>
-  <FormLoginRegister type="Login" />
+  <FormLoginRegister type="Register" />
 </template>
 
 <script>
 import FormLoginRegister from '../components/FormLoginRegister.vue'
 
 export default {
-  name: 'LoginPage',
+  name: 'RegisterPage',
   components: {
     FormLoginRegister
   }
