@@ -3,23 +3,33 @@
     <input v-model="user" type="text" name="user" />
     <input v-model="password" type="password" name="password" />
     <button v-on:click="onClickLogin">Login</button>
+    <p>{{mensageLogin}}</p>
   </div>
 </template>
 
 <script>
-import loginApi from '../services/api';
+import { loginApi } from '../services/api';
+import { saveToken } from '../helpers/actionsLocalStorage'
+import router from '@/routes/router';
 export default {
   name: 'FormLogin',
   data(){
     return {
       user: '',
       password: '',
+      mensageLogin: '',
     }
   },
   methods:{
-    onClickLogin: function() {
+    onClickLogin: async function() {
       const { user, password } = this;
-      loginApi({ user, password });
+      const login = await loginApi({ user, password });
+      if (login.status === 200) {
+        saveToken(login.data);
+        router.push('/');
+      } else {
+        this.mensageLogin = login;
+      }
     }
   }
 }
