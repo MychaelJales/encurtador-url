@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Users = require('../models/Users');
 require('dotenv').config({ path: '../config/.env' });
+const jsonwebtoken = require('jsonwebtoken');
 
 router.post('/', async (req, res) => {
   const { user, password } = req.body;
-  console.log(user);
   try {
     let foundUser = await Users.findOne({user});
         if (!foundUser) {
@@ -14,11 +14,15 @@ router.post('/', async (req, res) => {
                 password,
             });
             await newUser.save();
-            res.status(200).json('Register successful');
+            Token = await jsonwebtoken.sign({
+              user,
+              password,
+            }, 'SenhaParaProtegerOToken');
+            res.status(200).json(Token);
         } else {
             // console.log('Email already used');
             const users = await Users.find({}).lean().exec();
-            res.status(400).json('Email already used');
+            res.status(400).json('User already used');
         }
   } catch (err) {
     console.log(err);

@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
         password,
       }, 'SenhaParaProtegerOToken');
       res.status(200).json(Token);
-      res.send('Login successful');
+      // res.send('Login successful');
     } catch (err) {
       console.log(err);
       res.status(500).json('Server Error');

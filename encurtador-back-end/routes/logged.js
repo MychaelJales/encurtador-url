@@ -5,30 +5,27 @@ require('dotenv').config({ path: '../config/.env' });
 const jsonwebtoken = require('jsonwebtoken');
 
 router.post('/', async (req, res) => {
-  const { Auth } = req.body;
-  console.log(Auth);
+  const { Token } = req.body;
 
-  if (Auth) {
+  if (Token) {
     try {
-      Token = await jsonwebtoken.verify(Auth, 'SenhaParaProtegerOToken', (err, decoded) => ({err, decoded}));
-      console.log(Token);
-      if (Token.decoded) {
-        const { user, password } = Token.decoded;
+      Auth = await jsonwebtoken.verify(Token, 'SenhaParaProtegerOToken', (err, decoded) => ({err, decoded}));
+      if (Auth.decoded) {
+        const { user, password } = Auth.decoded;
         let foundUser = await Users.findOne({user, password});
         if (foundUser) {
-          res.status(200).json('Login successful');
+          res.status(200).json(foundUser.user);
         } else {
-          res.status(400).json('User not registered')
+          res.status(401).json('User not registered')
         }
       } else {
-        res.status(400).json('Token invalid. Login again.');
+        res.status(402).json('Token invalid. Login again.');
       }
     } catch (err) {
-      console.log(err);
       res.status(500).json('Server Error');
     }
   } else {
-    res.status(400).json('User not logged');
+    res.status(403).json('User not logged');
   }
 });
 
