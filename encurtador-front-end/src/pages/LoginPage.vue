@@ -1,5 +1,7 @@
 <template>
-  <FormLoginRegister type="Login" />
+  <div class="container">
+    <FormLoginRegister type="Login" />
+  </div>
 </template>
 
 <script>
@@ -13,6 +15,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.container {
+  width: 300px;
+}
 
 </style>

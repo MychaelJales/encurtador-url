@@ -1,8 +1,15 @@
 <template>
   <main>
-    <input v-model="origUrl" type="text" name="origUrl" />
-    <button v-on:click="onClickGenerate">Generate URL</button>
-    <a v-if="shortUrl" :href="shortUrl" target="_blank" >{{shortUrl}}</a>
+    <h2 class="logo">Encurter URL</h2>
+    <b-form-group
+      id="input-group-1"
+      label-for="input-1"
+      description="Enter URL"
+    >
+      <b-form-input v-model="origUrl" type="text" name="origUrl" />
+    </b-form-group>
+    <b-button v-on:click="onClickGenerate">Generate URL</b-button>
+    <b-button v-if="shortUrl" variant="link" :href="shortUrl" target="_blank" >{{shortUrl}}</b-button>
     <p v-else>{{invalidUrl}}</p>
   </main>
 </template>
@@ -41,5 +48,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+main {
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 50px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 </style>

@@ -1,16 +1,16 @@
 <template>
-  <header>
+  <header class="nav-bar">
     <h4 v-if="userLogged">Bem vindo, {{user}}!</h4>
     <h4 v-else>{{notLogged}}</h4>
+    <b-button v-on:click="onClickMyUrls">My URLs</b-button>
+    <b-button v-on:click="onClickRanking">Ranking of Most Visited URLs</b-button>
     <span v-if="!userLogged">
-      <button v-on:click="onClickLogin">Login</button>
-      <button v-on:click="onClickRegister">Register</button>
+      <b-button v-on:click="onClickLogin">Login</b-button>
+      <b-button v-on:click="onClickRegister">Register</b-button>
     </span>
     <span v-else>
-      <button v-on:click="onClickSignOut">Sign out</button>
+      <b-button v-on:click="onClickSignOut">Sign out</b-button>
     </span>
-    <button v-on:click="onClickMyUrls">My URLs</button>
-    <button v-on:click="onClickRanking">Ranking of Most Visited URLs</button>
   </header>
 </template>
 
@@ -53,5 +53,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.nav-bar {
+  width: 98vw;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10px;
+  background-color: #6c747c;
+}
+h4 {
+  color: aliceblue;
+}
 </style>
