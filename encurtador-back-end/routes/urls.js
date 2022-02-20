@@ -15,7 +15,7 @@ router.post('/short', async (req, res) => {
     try {
       let url = await Url.findOne({ origUrl });
       if (url) {
-        res.json(url);
+        res.json(url.shortUrl);
       } else {
         const shortUrl = `${base}/${urlId}`;
 
@@ -28,14 +28,15 @@ router.post('/short', async (req, res) => {
         });
 
         await url.save();
-        res.json(url);
+        res.json(url.shortUrl);
       }
     } catch (err) {
       console.log(err);
+      
       res.status(500).json('Server Error');
     }
   } else {
-    res.status(400).json('Invalid Original Url');
+    res.status(400).send('Invalid Original Url');
   }
 });
 
