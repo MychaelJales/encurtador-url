@@ -10,6 +10,7 @@
       <button v-on:click="onClickSignOut">Sign out</button>
     </span>
     <button v-on:click="onClickMyUrls">My URLs</button>
+    <button v-on:click="onClickRanking">Ranking of Most Visited URLs</button>
   </header>
 </template>
 
@@ -41,8 +42,11 @@ export default {
       router.go();
     },
     onClickMyUrls: function() {
-        router.push('/myurls');
+      router.push('/myurls');
     },
+    onClickRanking: function() {
+      router.push('/rankingurl')
+    }
   },
 }
 </script>

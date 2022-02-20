@@ -3,6 +3,7 @@ import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import MyUrlsPage from '../pages/MyUrlsPage';
+import RankingUrlPage from '../pages/RankingUrlPage'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/myurls',
     name: 'MyUrls',
     component: MyUrlsPage,
+  },
+  {
+    path: '/rankingurl',
+    name: 'RankingUrl',
+    component: RankingUrlPage,
   }
 ];
 

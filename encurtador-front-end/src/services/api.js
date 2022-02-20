@@ -86,7 +86,6 @@ export const getMyUrlsApi = (user) => {
   const response = api.get(
     `api/urlsCreated/${user}`,
   ).then((res) => {
-    // console.log(res);
     return res;
   }).catch((error) => {
     console.log(error);
@@ -99,4 +98,9 @@ export const delMyUrlApi = async (urlId) => {
   await api.delete(
     `api/delete/${urlId}`,
   )
+};
+
+export const getAllUrlsApi = async () => {
+  const response = await api.get('api/allurls');
+  return response;
 };
