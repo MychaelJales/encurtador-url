@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
+import MyUrlsPage from '../pages/MyUrlsPage';
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     name: 'RegisterPage',
     component: RegisterPage,
   },
+  {
+    path: '/myurls',
+    name: 'MyUrls',
+    component: MyUrlsPage,
+  }
 ];
 
 const router = createRouter({

@@ -10,6 +10,7 @@ import HeaderHome from '@/components/HeaderHome'
 import MainHome from '@/components/MainHome'
 import router from '@/routes/router';
 import { loggedApi } from '../services/api'
+import { saveUser } from '@/helpers/actionsLocalStorage';
 
 export default {
   name: 'HomePage',
@@ -37,6 +38,7 @@ export default {
     loggedApi(JSON.parse(Token)).then((res) => {
       if (res.data) {
         this.user = res.data;
+        saveUser(res.data);
         this.userLogged = true;
       } else {
         this.notLogged = res;

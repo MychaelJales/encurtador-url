@@ -6,11 +6,16 @@
       <button v-on:click="onClickLogin">Login</button>
       <button v-on:click="onClickRegister">Register</button>
     </span>
+    <span v-else>
+      <button v-on:click="onClickSignOut">Sign out</button>
+    </span>
+    <button v-on:click="onClickMyUrls">My URLs</button>
   </header>
 </template>
 
 <script>
 import router from '@/routes/router';
+import { deleteToken } from '@/helpers/actionsLocalStorage';
 
 export default {
   name: 'HeaderHome',
@@ -30,6 +35,13 @@ export default {
     },
     onClickRegister: function() {
         router.push('/register');
+    },
+    onClickSignOut: function() {
+      deleteToken();
+      router.go();
+    },
+    onClickMyUrls: function() {
+        router.push('/myurls');
     },
   },
 }
