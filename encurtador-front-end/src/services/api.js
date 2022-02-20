@@ -61,3 +61,23 @@ export const loggedApi = (Token) => {
   })
   return response;
 };
+
+export const generateApi = ({ origUrl, user }) => {
+  const response = api.post(
+    'api/short',
+    {
+      origUrl,
+      user,
+    },
+    {
+      'Content-Type': 'application/json',
+    },
+  ).then((res) => {
+    console.log(res);
+    return res;
+  }).catch((error) => {
+    console.log(error);
+    return 'Invalid Url';
+  })
+  return response;
+};
