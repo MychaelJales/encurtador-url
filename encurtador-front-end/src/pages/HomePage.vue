@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderHome :user="user" :notLogged="notLogged" :userLogged="userLogged" />
-    <MainHome />
+    <MainHome :user="user" />
   </div>
 </template>
 
