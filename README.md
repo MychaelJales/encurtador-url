@@ -34,7 +34,7 @@ encurtador-url/
 ├── encurtador-back-end # responsável por processar nossos dados através de requisições
 │   ├── package.json # principal componente da aplicação
 │   ├── package-lock.json # arquivo responsável por otimizar a instalação em outros ambientes
-|   ├── app.js # inicia a aplicação
+│   ├── app.js # inicia a aplicação
 │   └── src
 │       ├── config
 │       │   ├── .env
@@ -54,10 +54,10 @@ encurtador-url/
 ├── encurtador-front-end # responsável por ser uma interface amigável para nosso back-end
 │   ├── package.json # principal componente da aplicação
 │   ├── package-lock.json # arquivo responsável por otimizar a instalação em outros ambientes
-|   ├── babel.config.js
-|   ├── jsconfig.json
-|   ├── vue.config.js
-|   ├── README.md
+│   ├── babel.config.js
+│   ├── jsconfig.json
+│   ├── vue.config.js
+│   ├── README.md
 │   ├── public
 │   │   ├── favicon.ico
 │   │   ├── index.html
