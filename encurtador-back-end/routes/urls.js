@@ -10,6 +10,7 @@ router.post('/short', async (req, res) => {
   const { origUrl, user } = req.body;
   const base = process.env.BASE;
 
+  console.log({ origUrl, user });
   const urlId = shortid.generate();
   if (utils.validateUrl(origUrl)) {
     try {
@@ -18,13 +19,15 @@ router.post('/short', async (req, res) => {
         res.json(url.shortUrl);
       } else {
         const shortUrl = `${base}/${urlId}`;
+        const data = new Date();
+        const dataFormatada = ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear(); 
 
         url = new Url({
           origUrl,
           shortUrl,
           urlId,
           user,
-          date: new Date(),
+          date: dataFormatada,
         });
 
         await url.save();
@@ -40,20 +43,21 @@ router.post('/short', async (req, res) => {
   }
 });
 
-router.get('/aa', async (req, res) => {
+router.get('/allurls', async (req, res) => {
   try {
     const url = await Url.find({}).lean().exec();
-    res.json(url);
+    res.status(200).json(url);
   } catch (err) {
     console.log(err);
     res.status(500).json('Server Error');
   }
 })
 
-router.delete('/bb', async (req, res) => {
+router.delete('/delete/:urlId', async (req, res) => {
   try {
-    const test = 't5wRzbcU2';
-    const url = await Url.deleteOne({ urlId: test });
+    const { urlId } = req.params;
+    const url = await Url.deleteOne({ urlId });
+    res.send(200);
   } catch (err) {
     console.log(err);
     res.status(500).json('Server Error');
