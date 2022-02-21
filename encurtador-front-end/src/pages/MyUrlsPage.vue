@@ -1,30 +1,38 @@
 <template>
   <main>
     <h3>My URLs</h3>
-    <div v-if="user">
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>URL Original</th>
-          <th>Short URL</th>
-          <th>Number Cliks</th>
-          <th>Date</th>
-          <th>Delete</th>
-        </tr>
-        <tr v-for="url in urls" :key="url.urlId">
-          <td>{{ url.urlId }}</td>
-          <td>{{ url.origUrl }}</td>
-          <td>{{ url.shortUrl }}</td>
-          <td>{{ url.clicks }}</td>
-          <td>{{ url.date }}</td>
-          <td>
-            <button v-on:click="onClickDeleteUrl(url.urlId)">Delete URL</button>
-          </td>
-        </tr>
+    <div class="content" v-if="user">
+      <table class="rTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>URL Original</th>
+            <th>Short URL</th>
+            <th>Number Cliks</th>
+            <th>Date</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="url in urls" :key="url.urlId">
+            <td>{{ url.urlId }}</td>
+            <td>
+              <b-button variant="link" :href="url.origUrl" target="_blank" >{{url.origUrl}}</b-button>
+            </td>
+            <td>
+              <b-button variant="link" :href="url.shortUrl" target="_blank" >{{url.shortUrl}}</b-button>
+            </td>
+            <td>{{ url.clicks }}</td>
+            <td>{{ url.date }}</td>
+            <td>
+              <b-button variant="danger" v-on:click="onClickDeleteUrl(url.urlId)">Delete URL</b-button>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
     <p v-else>User not Logged</p>
-    <button v-on:click="onClickgoHome" >Back to Home</button>
+    <b-button v-on:click="onClickgoHome" >Back to Home</b-button>
   </main>
 </template>
 

@@ -20,4 +20,48 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.content {
+  display:flex;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  justify-content: center;
+}
+
+.rTable {
+  text-align: center;
+  width: 96vw;
+}
+.rTable thead {
+  background: black;
+  font-weight: bold;
+  color:#fff;
+}
+
+.rTable tbody tr:nth-child(2n) {
+  background: #ccc;
+}
+
+.rTable th , .rTable td {
+  padding: 7px 0;
+}
+
+td {
+  max-width: 200px;
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+  .content{width: 98vw;}
+
+  .rTable thead th{display:flex; flex-direction: column;}
+  .rTable tbody td{
+    display: flex;
+    flex-direction: column;
+/*     align-items: center;
+    justify-content: center;
+    text-align: center; */
+    max-width: 90vw;
+  }
+}
 </style>

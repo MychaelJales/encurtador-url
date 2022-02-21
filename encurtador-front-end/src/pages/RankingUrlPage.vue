@@ -1,27 +1,35 @@
 <template>
   <main>
     <h3>Ranking of Most Visited URLs</h3>
-    <div >
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>Ranking</th>
-          <th>URL Original</th>
-          <th>Short URL</th>
-          <th>Number Access</th>
-          <th>Date</th>
-        </tr>
-        <tr v-for="(url, index) in urls" :key="url.urlId">
-          <td>{{ url.urlId }}</td>
-          <td>{{index + 1 }}°</td>
-          <td>{{ url.origUrl }}</td>
-          <td>{{ url.shortUrl }}</td>
-          <td>{{ url.clicks }}</td>
-          <td>{{ url.date }}</td>
-        </tr>
+    <div class="content">
+      <table class="rTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Ranking</th>
+            <th>URL Original</th>
+            <th>Short URL</th>
+            <th>Number Access</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(url, index) in urls" :key="url.urlId">
+            <td>{{ url.urlId }}</td>
+            <td>{{index + 1 }}°</td>
+            <td>
+              <b-button variant="link" :href="url.origUrl" target="_blank" >{{url.origUrl}}</b-button>
+            </td>
+            <td>
+              <b-button variant="link" :href="url.shortUrl" target="_blank" >{{url.shortUrl}}</b-button>
+            </td>
+            <td>{{ url.clicks }}</td>
+            <td>{{ url.date }}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
-    <button v-on:click="onClickgoHome" >Back to Home</button>
+    <b-button v-on:click="onClickgoHome" >Back to Home</b-button>
   </main>
 </template>
 
@@ -57,6 +65,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
 
 </style>
