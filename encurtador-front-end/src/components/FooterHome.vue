@@ -34,7 +34,7 @@ img {
 }
 footer {
   background-color: grey;
-  width: 100vw;
+  width: 98vw;
 }
 h5 {
   color: aliceblue;

@@ -20,7 +20,7 @@ export default {
   color: #2c3e50;
   margin-top: 3px;
   background-color: ghostwhite;
-  min-height: 100vh;
+  min-height: 98vh;
   display: flex;
   align-items: center;
   justify-content: center;
