@@ -1,6 +1,7 @@
 <template>
   <b-form class="form-container">
     <h2 class="logo">Encurter URL</h2>
+    <h4>{{type}}</h4>
     <b-form-group
       id="input-group-1"
       label-for="input-1"
@@ -26,6 +27,10 @@
         />
     </b-form-group>
     <b-button variant="primary" v-on:click="onClickBtn">{{type}}</b-button>
+    <p v-if="type === 'Login'">
+      Not registered?
+      <b-button variant="link" href="/register" >sign up</b-button>
+    </p>
     <p>{{mensageLogin}}</p>
   </b-form>
 </template>
@@ -96,4 +101,9 @@ export default {
 .logo {
   margin-bottom: 20px;
 }
+
+h4 {
+  margin-bottom: 20px;
+}
+
 </style>

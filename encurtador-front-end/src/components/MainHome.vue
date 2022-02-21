@@ -51,8 +51,9 @@ export default {
 main {
   border: 1px solid black;
   border-radius: 15px;
+  padding: 50px;
   margin: 50px;
-  height: 200px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;

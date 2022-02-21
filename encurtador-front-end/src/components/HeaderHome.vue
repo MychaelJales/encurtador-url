@@ -65,4 +65,15 @@ export default {
 h4 {
   color: aliceblue;
 }
+@media (max-width: 700px) {
+  .nav-bar {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: #6c747c;
+}
+}
 </style>
