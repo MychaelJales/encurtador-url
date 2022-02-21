@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors')
 const app = express();
-const connectDB = require('./config/db');
-require('dotenv').config({ path: './config/.env' });
+const connectDB = require('./src/config/db');
+require('dotenv').config({ path: './src/config/.env' });
 
 connectDB();
 
@@ -17,11 +17,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-app.use('/', require('./routes/index'));
-app.use('/api', require('./routes/urls'));
-app.use('/register', require('./routes/register'));
-app.use('/login', require('./routes/login'));
-app.use('/logged', require('./routes/logged'));
+app.use('/', require('./src/routes/index'));
+app.use('/api', require('./src/routes/urls'));
+app.use('/register', require('./src/routes/register'));
+app.use('/login', require('./src/routes/login'));
+app.use('/logged', require('./src/routes/logged'));
 
 // Server Setup
 const PORT = 3333;

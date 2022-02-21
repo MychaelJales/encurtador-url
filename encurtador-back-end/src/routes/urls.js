@@ -10,7 +10,6 @@ router.post('/short', async (req, res) => {
   const { origUrl, user } = req.body;
   const base = process.env.BASE;
 
-  console.log({ origUrl, user });
   const urlId = shortid.generate();
   if (utils.validateUrl(origUrl)) {
     try {
@@ -67,7 +66,6 @@ router.delete('/delete/:urlId', async (req, res) => {
 router.get('/urlsCreated/:user', async (req, res) => {
   try {
     const { user } = req.params;
-    console.log(user);
     const urls = await Url.find({ user }).lean().exec();
     res.json(urls)
   } catch (err) {
