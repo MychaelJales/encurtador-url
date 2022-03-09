@@ -99,6 +99,7 @@ encurtador-url/
 - O processo não deve retornar erros. `Warns` *(Avisos)* não impedem seu funcionamento;
 - Rodar a aplicação com `npm start`;
 -  Esse aplicativo requer, **excepcionalmente**, um arquivo `.env`, já contido na pasta /config no repositório;
+    - Neste arquivo deve-se ser inserido o link de uma banco de dados MongoDB. (MONGO_URI='o link aqui'). 
 - Por padrão, essa aplicação funciona a partir da porta `3333`;
 
 ###### Instalando o front-end
