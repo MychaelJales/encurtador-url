@@ -101,10 +101,10 @@ teste-tecnico/
 -  Esse aplicativo requer, **excepcionalmente**, um arquivo `.env`, que deve ser inserido na raiz do projeto (`./teste-tecnico/teste-backend`); 
     - Neste arquivo deve-se ser inserido as seguintes variáveis de uma banco de dados SQL:
         -  HOSTNAME='nome do Host'
-           DB_USER='user de acesso ao banco'
-           DB_PASSWORD='insira o password de acesso ao banco'
-           DB_DATABASE=cashforce_v3 //exemplo - nome do schema
-           PORT=3000 //exemplo - porta que a aplicação backend irá rodar
+        -  DB_USER='user de acesso ao banco'
+        -  DB_PASSWORD='insira o password de acesso ao banco'
+        -  DB_DATABASE=cashforce_v3 //exemplo - nome do schema
+        -  PORT=3000 //exemplo - porta que a aplicação backend irá rodar
 
 ###### Instalando o front-end
 
