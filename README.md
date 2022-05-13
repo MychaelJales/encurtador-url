@@ -23,39 +23,35 @@ Uma verdadeira *mão-na-roda* para criar links mais curtos!
 #### Instalação
 
 Essa é uma aplicação em [NodeJS](https://nodejs.org/pt-br/about/) e [Vue.JS](https://vuejs.org/), que possui **dois componentes principais** (`front` e `back`):
-- `Front-end` Essa aplicação consome nossa API e nos retorna as URLs;
-- `Back-end` Onde a **mágica** acontece! Nosso back-end utiliza um banco de dados SQL e o ORM Sequelize;
+- `Front-end` Essa aplicação consome nossa API e nos retorna os dados no Front-End;
+- `Back-end` Onde a **mágica** acontece! Nosso back-end utiliza o banco de dados [MySQL](https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=bing&utm_campaign=mdb_bs_americas_brazil_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=415204511&adgroup=1209463260064162&msclkid=b11ebd3f924517af0d9edf2c5bd45116), onde são salvas nossas URLs;
 
 ##### Estrutura do aplicativo
 
 ```bash
-teste-tecnico/
+encurtador-url/
 ├── README.md # este arquivo
-├── teste-backend # responsável por processar nossos dados através de requisições
+├── encurtador-back-end # responsável por processar nossos dados através de requisições
 │   ├── package.json # principal componente da aplicação
 │   ├── package-lock.json # arquivo responsável por otimizar a instalação em outros ambientes
 │   ├── app.js # inicia a aplicação
-│   ├── index.js # ouve a porta configurada
-│   ├── .env # variáveis de ambiente 
 │   └── src
 │       ├── config
-│       │   ├── config.js
-│       ├── controllers.js
-│       │   ├── orderController.js
-│       │   ├── userController.js
-│       ├── services
-│       │   ├── orderService.js
-│       │   └── userService.js
-│       ├── models
-│       │   ├── buyers.js
-│       │   ├── cnpjs.js
+│       │   ├── .env
+│       │   └── db.js
+│       ├── routes
 │       │   ├── index.js
-│       │   ├── orders.js
-│       │   ├── providers.js
-│       │   └── users.js
-│       ├── routers
-│       └── └── orders.js
-├── teste-frontend # responsável por ser uma interface amigável para nosso back-end
+│       │   ├── logged.js
+│       │   ├── login.js
+│       │   ├── register.js
+│       │   └── urls.js
+│       ├── utils
+│       │   ├── utils.js
+│       │   └── server.js
+│       ├── models
+│       │   ├── Users.js
+│       │   └── Url.js
+├── encurtador-front-end # responsável por ser uma interface amigável para nosso back-end
 │   ├── package.json # principal componente da aplicação
 │   ├── package-lock.json # arquivo responsável por otimizar a instalação em outros ambientes
 │   ├── babel.config.js
@@ -63,24 +59,28 @@ teste-tecnico/
 │   ├── vue.config.js
 │   ├── README.md
 │   ├── public
-│   │   ├── favicon.png
+│   │   ├── favicon.ico
 │   │   ├── index.html
 │   └── src
 │       ├── App.vue
 │       ├── main.js
 │       ├── components
-│       │   ├── MyInvoices.vue
-│       │   └── MySideBar.vue
+│       │   ├── FooterHome.vue
+│       │   ├── FormLoginRegister.vue
+│       │   ├── HeaderHome.vue
+│       │   └── MainHome.vue
 │       ├── helpers
-│       │   └── fetchOrders.js
+│       │   └── actionsLocalStorage.js
 │       ├── pages
-│       │   └── MyInvoicesPage.vue
-│       ├── store
-│       │   ├── modules
-│       │   │   └── orders.js
-│       │   ├── actions.js
-│       │   ├── mutations.js
-│       │   └── index.js
+│       │   ├── HomePage.vue
+│       │   ├── LoginPage.vue
+│       │   ├── MyUrlsPagePage.vue
+│       │   ├── RankingUrlPage.vue
+│       │   └── RegisterPage.vue
+│       ├── routes
+│       │   └── router.js
+│       ├── services
+│       │   └── api.js
 
 ```
 
@@ -94,21 +94,17 @@ teste-tecnico/
 
 ###### Instalando o back-end
 
-- Acesse a pasta `./teste-tecnico/teste-backend`;
+- Acesse a pasta `./encurtador-url/encurtador-back-end`;
 - Instalar a aplicação utilizando o comando `npm install`;
 - O processo não deve retornar erros. `Warns` *(Avisos)* não impedem seu funcionamento;
 - Rodar a aplicação com `npm start`;
--  Esse aplicativo requer, **excepcionalmente**, um arquivo `.env`, que deve ser inserido na raiz do projeto (`./teste-tecnico/teste-backend`); 
-    - Neste arquivo deve-se ser inserido as seguintes variáveis de uma banco de dados SQL:
-        -  HOSTNAME='nome do Host'
-        -  DB_USER='user de acesso ao banco'
-        -  DB_PASSWORD='insira o password de acesso ao banco'
-        -  DB_DATABASE=cashforce_v3 //exemplo - nome do schema
-        -  PORT=3000 //exemplo - porta que a aplicação backend irá rodar
+-  Esse aplicativo requer, **excepcionalmente**, um arquivo `.env`, já contido na pasta /config no repositório;
+    - Neste arquivo deve-se ser inserido o link de uma banco de dados MongoDB. (MONGO_URI='o link aqui'). 
+- Por padrão, essa aplicação funciona a partir da porta `3333`;
 
 ###### Instalando o front-end
 
-- Acesse a pasta `./teste-tecnico/teste-frontend`;
+- Acesse a pasta `./encurtador-url/encurtador-front-end`;
 - Instalar a aplicação utilizando o comando `npm install`;
 - O processo não deve retornar erros. `Warns` *(Avisos)* não impedem seu funcionamento;
 - Rodar a aplicação com `npm run serve`;
